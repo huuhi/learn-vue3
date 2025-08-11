@@ -1,47 +1,52 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/Home.vue'
-import About from '../views/About.vue'
-import News from '../views/News.vue'
-import RetailNews from '../views/DetailNews.vue'
-import DetailNews from '../views/DetailNews.vue';
+import { createRouter, createWebHistory } from 'vue-router'
+import Props from '@/pages/01_props/Father.vue'
+import Event from '@/pages/02_custom-event/Father.vue'
+import Bus from '@/pages/03_mitt/Father.vue'
+import Model from '@/pages/04_v-model/Father.vue'
+import AttrsListeners from '@/pages/05_$attrs/Father.vue'
+import RefChildrenParent from '@/pages/06_$refs-$parent/Father.vue'
+import ProvideInject from '@/pages/07_provide-inject/Father.vue'
+import Pinia from '@/pages/08_pinia/Father.vue'
+import Slot from '@/pages/09_slot/Father.vue'
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes: [
-    {
-      name: 'zhuye',
-      path: '/home',
-      component: Home
-    },
-    {
-      name: 'guanyu',
-      path: '/about',
-      component: About
-    },
-    {
-      name: 'xinwen',
-      path: '/news',
-      component: News,
-      children: [
-        {
-          name: 'detail',
-          // 子集不需要写 ‘/’  ?表示可选
-          // path: 'detail/:id/:title/:content?',
-          path: 'detail',
-          component: DetailNews,
-          // props 第一种写法，将所有params参数传递给组件
-          // props: true
-          // 第二种,函数,自定义
-          props(route) {
-            return route.query
-          }
-        }
-      ]
-    }, {
-      path: '/',
-      redirect: '/home'
-    }
-  ]
+export default createRouter({
+	history: createWebHistory(),
+	routes: [
+		{
+			path: '/props',
+			component: Props
+		},
+		{
+			path: '/event',
+			component: Event
+		},
+		{
+			path: '/mitt',
+			component: Bus
+		},
+		{
+			path: '/model',
+			component: Model
+		},
+		{
+			path: '/attrs',
+			component: AttrsListeners
+		},
+		{
+			path: '/ref-parent',
+			component: RefChildrenParent
+		},
+		{
+			path: '/provide-inject',
+			component: ProvideInject
+		},
+		{
+			path: '/pinia',
+			component: Pinia
+		},
+		{
+			path: '/slot',
+			component: Slot
+		},
+	]
 })
-
-export default router
