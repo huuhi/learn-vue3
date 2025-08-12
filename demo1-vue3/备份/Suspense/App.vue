@@ -1,6 +1,5 @@
 <template>
   <div class="app">
-    <Hello/>
     <h1>App组件</h1>
     <Suspense>
       <template #default>
